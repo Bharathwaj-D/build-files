@@ -3,11 +3,11 @@ phases:
     install:
      commands:
      - sudo yum install docker -y
-     - sudo service docker start
-     - sudo docker pull httpd
 
     build:
      commands:
+      - sudo service docker start
+      - sudo docker pull httpd
       - sudo docker build . -t bharath:latest
       - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 928920371678.dkr.ecr.ap-southeast-1.amazonaws.com
       - sudo docker tag bharath:latest 928920371678.dkr.ecr.ap-southeast-1.amazonaws.com/bharath:$IMAGE_TAG
