@@ -13,7 +13,7 @@
             "environment": [], 
             "name": "bharath", 
             "mountPoints": [], 
-            "image": "928920371678.dkr.ecr.ap-southeast-1.amazonaws.com/bharath:2", 
+            "image": "928920371678.dkr.ecr.ap-southeast-1.amazonaws.com/bharath:latest", 
             "logConfiguration": 
             { 
                 "logDriver": "awslogs", 
