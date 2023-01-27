@@ -3,8 +3,8 @@ phases:
     install:
      commands:
      - sudo yum install docker -y
-     - sudo systemctl enable docker.service
-     - sudo systemctl start docker.service
+     - sudo service docker start
+     - sudo docker pull httpd
 
     build:
      commands:
