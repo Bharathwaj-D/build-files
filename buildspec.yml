@@ -1,12 +1,21 @@
 version: 0.2
 phases:
+    install:
+     commands:
+     - sudo yum install docker -y
+     - sudo systemctl enable docker.service
+     - sudo systemctl start docker.service
+
     build:
      commands:
-      - sudo docker build . -t bharath:latest       
+      - sudo docker build . -t bharath:latest
+      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 928920371678.dkr.ecr.ap-southeast-1.amazonaws.com
+      - sudo docker tag bharath:latest 928920371678.dkr.ecr.ap-southeast-1.amazonaws.com/bharath:$IMAGE_TAG
+      - sudo docker push 928920371678.dkr.ecr.ap-southeast-1.amazonaws.com/bharath:$IMAGE_TAG
+        
       
       
 artifacts:
-  files:
-    - '**/*' 
-  base-directory: 'build'       
+  files: bharath.json 
+         
       
